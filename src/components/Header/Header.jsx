@@ -8,7 +8,7 @@ export const Header = () => {
     <>
       <header className={css.header}>
         <div className={css.wrapper}>
-          {/* <FaFlagUsa size="40px" color="#0c7bc1" /> */}
+          {/* <FaFlagUsa size="40px" color="#0c7bc1" />  */}
 
           <nav>
             <ul className={css.nav}>
@@ -24,7 +24,7 @@ export const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="//movies"
+                  to="/movies"
                   className={({ isActive }) =>
                     isActive ? css.active : css.link
                   }

@@ -1,0 +1,96 @@
+.movListCont{
+background-color: rgb(98, 112, 111);
+
+width:100%;
+}
+
+
+.movList{
+    padding: 8px 0px 8px 0px;
+   
+    list-style: none;
+display: flex;
+flex-wrap: wrap;
+
+gap: 20px;
+width:100%;
+justify-content:space-evenly;
+}
+.moviListImg{
+    width: 65%;
+}
+.moviListImg:hover,
+.moviListImg:focus{
+    box-shadow: 0px 0px 21px 7px #C2D3CC;  
+}
+/* -shadow: inset 0px 0px 82px 100px rgb(4, 33, 39); */
+.moviListItem{
+background-color: rgb(75, 99, 91);
+border: 1px solid rgb(6, 53, 64);
+border-radius: 8px;
+max-width: 300px;
+padding: 4px;
+}
+
+.moviListTiyle:hover,
+.moviListTiyle:focus
+{ text-decoration:underline;}
+   a { text-decoration: none; /* Прибирає підкреслення */
+    color: inherit; /* Залишає колір тексту таким, як у батьківського елемента, або можна задати свій колір, наприклад: color: black; */
+
+}
+
+.moviListDiscription{
+overflow: hidden; /* Приховує текст, що виходить за межі */
+    white-space: nowrap; /* Забороняє перенесення тексту на новий рядок */
+    text-overflow: ellipsis; /* Додає три крапки, якщо текст обмежений */
+    max-width: 200px; /* Встановлює максимальну ширину блоку (залежить від вашого дизайну) */
+
+}
+.moviListDiscription:hover {
+ white-space: normal; /* Дозволяє перенесення тексту при наведенні */
+    overflow: visible; /* Робить весь текст видимим */
+    max-width: none; /* Знімає обмеження ширини */   
+  }
+  
+
+
+.moviListLoadMor{
+border: 1px solid rgb(6, 53, 64);
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-top: 5px;
+ color:white;
+ background-color: rgb(75, 99, 91);
+ font-size: 20px;
+
+}
+
+.moviListLoadMor:hover,
+.moviListLoadMor:focus{
+   
+  background-color: rgb(6, 53, 64);
+
+
+  
+  }
+
+  /*
+  useEffect(()=>{
+  if (!region) return;
+const asyncWrapper= async()=>{
+try{
+  setIsLoading(true);
+  setError(null);
+  const data = await fetchByRegion(region);
+  // console.log(data)
+  setCountries(data);
+}
+catch{ setError("Sorry, something is wrong!")}
+finally{
+  setIsLoading(false); 
+}
+}
+asyncWrapper();
+}, [region]);
+  */

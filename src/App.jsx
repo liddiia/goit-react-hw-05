@@ -4,17 +4,25 @@ import  MoviesPage  from './pages/MoviesPage';
 import HomePage  from './pages/HomePage';
 import  NotFoundPage  from './pages/NotFoundPage';
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
+import MovieDetailsPage from './pages/MovieDetailsPage';
+// import { Navigate } from "react-router-dom";
 
 
- const App = () => {
+// const base_url = "https://api.themoviedb.org/3/movie/550?"
+// const api_key = "37907d7207899a93e92a78599de60f63"
+
+const App = () => {
+
   return (
     <>
     <Header /> 
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
         <Route path="*" element={<NotFoundPage/>} />
+        {/* <Route path='*' element={<Navigate to={'/'}/>}/> */}
       </Routes>
     </>
   );
