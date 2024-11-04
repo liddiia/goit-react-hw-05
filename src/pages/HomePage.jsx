@@ -1,36 +1,34 @@
 import { useEffect, useState } from "react";
 import MovieList from "../components/MovieList/MovieList";
 import Loading from "../components/Loading/Loading";
-import LoadMoreButton from "../components/LoadMoreButton/LoadMoreButton"; // Fixed typo in import
-import { fetchTrends } from "../Api/Api";
+// import LoadMoreButton from "../components/LoadMoreButton/LoadMoreButton"; // Fixed typo in import
+import {getMoviesTrends} from "../services/Api"
 
 export default function Home() {
   const [trends, setTrends] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const asyncWrapper = async () => {
+    async function asyncWrapper() {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetchTrends(page);
-
-        setTrends(response.data); 
+        const movies = await getMoviesTrends();
+        setTrends(movies);
       } catch (error) {
-        setError("Error loading movies: " + error.message);
+        setError(error.message);
       } finally {
         setLoading(false);
       }
-    };
-
+    }
     asyncWrapper();
-  }, [page]);
+  }, []);
 
-  const handleLoadMore = () => {
-    setPage((prevPage) => prevPage + 1);
-  };
+  // const handleLoadMore = () => {
+  //   setPage((prevPage) => prevPage + 1);
+  // };
 
   return (
     <div>
@@ -41,7 +39,7 @@ export default function Home() {
       ) : (
         <div>
           <MovieList movies={trends} />
-          <LoadMoreButton onClick={handleLoadMore} />
+          {/* <LoadMoreButton onClick={handleLoadMore} /> */}
         </div>
       )}
     </div>

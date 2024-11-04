@@ -1,39 +1,36 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import fetchMoviesId from "../Api/Api"; // Ensure this import points to the correct file path
+import { getMoviesDetailsById } from "../services/Api.jsx";
+import FilmDetails from "../components/FilmDetails/FilmDetails.jsx";
 
 const MovieDetailsPage = () => {
-  // const [favoriteFilm, setFavoriteFilm] = useState(null);
-  // const [error, setError] = useState(null);
-  // const [loading, setLoading] = useState(false);
-  // const { movieId } = useParams();
+  const location = useLocation();
+  const [film, setFilm] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { movieId } = useParams(); // movieId - динамічна частина маршрутизації
 
-  // useEffect(() => {
-  //   async function fetchMovieDetails() {
-  //     try {
-  //       setLoading(true);
-  //       setError(null);
-  //       const data = await fetchMoviesId(movieId);
-  //       setFavoriteFilm(data); // Assuming `data` contains the movie details directly
-  //     } catch (error) {
-  //       setError("Error loading movie: " + error.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   fetchMovieDetails();
-  // }, [movieId]);
-
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>{error}</p>;
-  // if (!favoriteFilm) return <p>No movie details available</p>;
+  useEffect(() => {
+    const asyncWrapper = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await getMoviesDetailsById(movieId);
+        setFilm(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    asyncWrapper();
+  }, [movieId]);
 
   return (
     <>
-      <h2>Movie Details Page</h2>
-      {/* <h3>{favoriteFilm.title}</h3>
-      <p>{favoriteFilm.overview}</p> */}
-      {/* Add more movie details here as needed */}
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {film && <FilmDetails film={film}  lication = {location}/>}
     </>
   );
 };

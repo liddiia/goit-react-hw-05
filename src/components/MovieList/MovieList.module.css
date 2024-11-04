@@ -6,8 +6,8 @@ width:100%;
 
 
 .movList{
-    padding: 8px 0px 8px 0px;
-   
+    padding: 16px;
+   margin: 0;
     list-style: none;
 display: flex;
 flex-wrap: wrap;
@@ -17,7 +17,7 @@ width:100%;
 justify-content:space-evenly;
 }
 .moviListImg{
-    width: 65%;
+    width: 70%;
 }
 .moviListImg:hover,
 .moviListImg:focus{
@@ -32,9 +32,10 @@ max-width: 300px;
 padding: 4px;
 }
 
-.moviListTiyle:hover,
-.moviListTiyle:focus
+.moviListTitle:hover,
+.moviListTitle:focus
 { text-decoration:underline;}
+
    a { text-decoration: none; /* Прибирає підкреслення */
     color: inherit; /* Залишає колір тексту таким, як у батьківського елемента, або можна задати свій колір, наприклад: color: black; */
 
@@ -44,8 +45,8 @@ padding: 4px;
 overflow: hidden; /* Приховує текст, що виходить за межі */
     white-space: nowrap; /* Забороняє перенесення тексту на новий рядок */
     text-overflow: ellipsis; /* Додає три крапки, якщо текст обмежений */
-    max-width: 200px; /* Встановлює максимальну ширину блоку (залежить від вашого дизайну) */
-
+    max-width: 85%; /* Встановлює максимальну ширину блоку (залежить від вашого дизайну) */
+margin-left: 8px;
 }
 .moviListDiscription:hover {
  white-space: normal; /* Дозволяє перенесення тексту при наведенні */
@@ -75,22 +76,3 @@ border: 1px solid rgb(6, 53, 64);
   
   }
 
-  /*
-  useEffect(()=>{
-  if (!region) return;
-const asyncWrapper= async()=>{
-try{
-  setIsLoading(true);
-  setError(null);
-  const data = await fetchByRegion(region);
-  // console.log(data)
-  setCountries(data);
-}
-catch{ setError("Sorry, something is wrong!")}
-finally{
-  setIsLoading(false); 
-}
-}
-asyncWrapper();
-}, [region]);
-  */

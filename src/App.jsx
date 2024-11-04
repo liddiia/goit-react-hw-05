@@ -6,6 +6,8 @@ import  NotFoundPage  from './pages/NotFoundPage';
 
 import { Routes, Route} from "react-router-dom";
 import MovieDetailsPage from './pages/MovieDetailsPage';
+import MovieReviews from './components/MovieReviews/MovieReviews';
+import MovieCast from './components/MovieCast/MovieCast';
 // import { Navigate } from "react-router-dom";
 
 
@@ -21,6 +23,8 @@ const App = () => {
         <Route path="/" element={<HomePage/>} />
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
+        <Route path="/movies/:movieId/reviews" element={<MovieReviews />} />
+        <Route path="/movies/:movieId/cast" element={<MovieCast />} />
         <Route path="*" element={<NotFoundPage/>} />
         {/* <Route path='*' element={<Navigate to={'/'}/>}/> */}
       </Routes>
