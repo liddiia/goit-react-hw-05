@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import css from "./FilmDetails.module.css";
 
 const FilmDetails = ({ film }) => {
+  const location=useLocation();
   return (
     <div className={css.filmDetailsCont}>
+<Link to= {location.state}>Go back</Link>
       <div>
       <h2 className={css.filmDetailsTitle}>Details of film: {film.original_title}</h2>
       {!film && <p>No movie details available</p>}
@@ -18,10 +20,8 @@ const FilmDetails = ({ film }) => {
       
 </div>
 <div>
-<Route path="/movies/:movieId/reviews" element={<MovieReviews />} />
-        <Route path="/movies/:movieId/cast" element={<MovieCast />} />
 
-  <Link to={`/movies/${movie.id}`} > Reviews  </Link>
+  <Link > Reviews  </Link>
       <Link>   Cast       </Link>
 </div>
     </div>

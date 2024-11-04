@@ -14,8 +14,8 @@ export const getMoviesTrends = async () => {
   return response.data.results;
 };
 
-export const getMoviesByQuery = async (movyId) => {
-  const response = await axios.get(`/movie/${movyId}`);
+export const getMoviesByQuery = async (query) => {
+  const response = await axios.get(`/search/movie?query=${query}`);
   return response.data.results;
 };
 
