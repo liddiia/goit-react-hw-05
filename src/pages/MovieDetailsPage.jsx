@@ -9,11 +9,14 @@ import Loader from "../components/Loader/Loader";
 const MovieDetailsPage = () => {
   const location = useLocation();
   console.log("location:", location);
-  const backLinkRef = useRef(location.state); // Ініціалізація useRef
+  
+  
+  const backLinkRef = useRef(location.state || "/movies"); 
+  
   const [film, setFilm] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { movieId } = useParams(); // movieId - динамічна частина маршрутизації
+  const { movieId } = useParams();
 
   useEffect(() => {
     const asyncWrapper = async () => {
@@ -33,6 +36,7 @@ const MovieDetailsPage = () => {
 
   return (
     <>
+     
       <Link to={backLinkRef.current} className={css.backLink}>
         Go back
       </Link>
@@ -43,11 +47,13 @@ const MovieDetailsPage = () => {
       {film && <FilmDetails film={film} location={location} />}
 
       <div className={css.detLinkCont}>
+       
         <NavLink
           className={({ isActive }) =>
             clsx(css.detLink, isActive && css.active)
           }
-          to="reviews" state={location}
+          to="reviews"
+          state={{ from: backLinkRef.current }} 
         >
           Reviews
         </NavLink>
@@ -56,7 +62,7 @@ const MovieDetailsPage = () => {
             clsx(css.detLink, isActive && css.active)
           }
           to="cast"
-          state={location}
+          state={{ from: backLinkRef.current }} 
         >
           Cast
         </NavLink>
