@@ -1,10 +1,15 @@
-import { useLocation, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getMoviesDetailsById } from "../services/Api.jsx";
-import FilmDetails from "../components/FilmDetails/FilmDetails.jsx";
+import { NavLink, Outlet, useLocation, useParams, Link } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import { getMoviesDetailsById } from "../services/Api";
+import FilmDetails from "../components/FilmDetails/FilmDetails";
+import clsx from "clsx";
+import css from "../components/FilmDetails/FilmDetails.module.css";
+import Loader from "../components/Loader/Loader";
 
 const MovieDetailsPage = () => {
   const location = useLocation();
+  console.log("location:", location);
+  const backLinkRef = useRef(location.state); // Ініціалізація useRef
   const [film, setFilm] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -28,12 +33,38 @@ const MovieDetailsPage = () => {
 
   return (
     <>
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {film && <FilmDetails film={film}  lication = {location}/>}
+      <Link to={backLinkRef.current} className={css.backLink}>
+        Go back
+      </Link>
+
+      {loading && <Loader />}
+      {error && <p className={css.errorMessage}>{error}</p>}
+
+      {film && <FilmDetails film={film} location={location} />}
+
+      <div className={css.detLinkCont}>
+        <NavLink
+          className={({ isActive }) =>
+            clsx(css.detLink, isActive && css.active)
+          }
+          to="reviews" state={location}
+        >
+          Reviews
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            clsx(css.detLink, isActive && css.active)
+          }
+          to="cast"
+          state={location}
+        >
+          Cast
+        </NavLink>
+      </div>
+
+      <Outlet />
     </>
   );
 };
 
 export default MovieDetailsPage;
-

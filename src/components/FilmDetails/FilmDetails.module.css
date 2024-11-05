@@ -30,3 +30,14 @@ margin-right: 20px;
     background-color: rgb(75, 99, 91);
    
 }
+
+.backLink{  padding: 10px 15px;
+    border: 1px solid rgb(6, 53, 64);
+   
+    border-radius: 5px;
+  
+  margin: 10px auto;
+ color:white;
+ 
+ font-size: 20px;
+}

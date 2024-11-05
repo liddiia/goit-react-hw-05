@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Loading from "../Loading/Loading";
+import Loading from "../Loader/Loader";
 import { getMoviesReviews } from "../../services/Api";
 import { useParams } from "react-router-dom";
 import css from "./MovieReviews.module.css"

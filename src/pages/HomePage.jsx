@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MovieList from "../components/MovieList/MovieList";
-import Loading from "../components/Loading/Loading";
+import Loading from "../components/Loader/Loader";
 import {getMoviesTrends} from "../services/Api"
 
 export default function Home() {

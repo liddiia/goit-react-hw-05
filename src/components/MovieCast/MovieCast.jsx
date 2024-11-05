@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Loading from "../Loading/Loading";
+import Loading from "../Loader/Loader";
 import { getMoviesCredits } from "../../services/Api";
 // import { useLocation, 
 import {useParams } from "react-router-dom";

@@ -1,29 +1,35 @@
+import { Suspense, lazy } from "react";
 import "./App.css";
-import { Header } from "./components/Navigation/Navigation";
-import MoviesPage from "./pages/MoviesPage";
-import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
-
 import { Routes, Route } from "react-router-dom";
-import MovieDetailsPage from "./pages/MovieDetailsPage";
-import MovieReviews from "./components/MovieReviews/MovieReviews";
-import MovieCast from "./components/MovieCast/MovieCast";
+import { Header } from "./components/Navigation/Navigation";
+import Loader from "./components/Loader/Loader"; 
+
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const MoviesPage = lazy(() => import("./pages/MoviesPage"));
+const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage"));
+const MovieCast = lazy(() => import("./components/MovieCast/MovieCast"));
+const MovieReviews = lazy(() => import("./components/MovieReviews/MovieReviews"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 const App = () => {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
-             <Route path="cast" element={<MovieCast />} />
-             <Route path="reviews" element={<MovieReviews />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-       
-      </Routes>
+        <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </>
   );
 };
+
 export default App;
+
