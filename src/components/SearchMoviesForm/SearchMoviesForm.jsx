@@ -8,7 +8,7 @@ const SeachMoviesForm = ({onSearch}) => {
     const handleSubmit = (values, actions) => {
 		console.log(values);
 		actions.resetForm();
-    onSearch(values)
+    onSearch(values.query)
 	};
     return (
         <Formik initialValues={{
@@ -20,7 +20,7 @@ const SeachMoviesForm = ({onSearch}) => {
                    
               <Field className={css.field} type="text" name="query" />
              
-                    <button className={css.btn} type="submit">Submit</button>
+                    <button className={css.searchBtn} type="submit">Submit</button>
                  <ErrorMessage name="query" component="span" />  
                  </Form>
         </Formik>

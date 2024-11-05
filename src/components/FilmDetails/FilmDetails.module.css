@@ -1,0 +1,19 @@
+.detLink{
+    padding: 10px 15px;
+    border: 1px solid rgb(6, 53, 64);
+   
+    border-radius: 5px;
+  
+    margin-top: 16px;
+ color:white;
+ background-color: rgb(75, 99, 91);
+ font-size: 20px;
+
+}
+.detLinkCont{
+    margin: 0 auto;
+} 
+.active{
+    background-color: rgb(6, 53, 64);
+    color: rgb(75, 99, 91)
+}

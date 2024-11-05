@@ -8,7 +8,7 @@ import { getMoviesByQuery } from "../services/Api";
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const param = searchParams.get("query");
-
+  console.log("param:",param)
   const [searchMovies, setSearchMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,6 @@ const MoviesPage = () => {
         setError(null);
         const data = await getMoviesByQuery(param);
         setSearchMovies(data);
-        console.log(searchMovies)
       } catch (error) {
         setError(error.message);
       } finally {
@@ -33,7 +32,8 @@ const MoviesPage = () => {
   }, [param]);
 
   const onSearch = (values) => {
-    if (values.trim()) { // Prevent setting empty query
+    if (values.trim()) { 
+      console.log("Setting query to:", values);
       setSearchParams({ query: values });
     }
   };

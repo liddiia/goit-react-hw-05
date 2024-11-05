@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import css from "./MovieList.module.css";
 
 const MovieList = ({ movies }) => {
@@ -10,14 +10,14 @@ const MovieList = ({ movies }) => {
           movies.map((movie) => {
             return (
               <li key={movie.id} className={css.moviListItem}>
-                <NavLink to={`/movies/${movie.id}`} state={location} >
+                <Link to={`/movies/${movie.id}`} state={location} >
                   <h3 className={css.moviListTitle}>{movie.title}</h3>
                   <img
                     className={css.moviListImg}
                     src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                     alt={movie.title}
                   />
-                </NavLink>
+                </Link>
                 <p className={css.moviListDiscription}>{movie.overview}</p>
               </li>
             );
