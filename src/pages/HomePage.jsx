@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import MovieList from "../components/MovieList/MovieList";
 import Loading from "../components/Loader/Loader";
-import {getMoviesTrends} from "../services/Api"
+import { getMoviesTrends } from "../services/Api";
 
 export default function Home() {
   const [trends, setTrends] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  
 
   useEffect(() => {
     async function asyncWrapper() {
@@ -34,7 +33,6 @@ export default function Home() {
       ) : (
         <div>
           <MovieList movies={trends} />
-         
         </div>
       )}
     </div>
