@@ -1,0 +1,21 @@
+.castCont{
+    list-style: none;
+display: flex;
+gap:20px;
+flex-wrap: wrap;
+}
+.castCard{
+    background-color: rgb(75, 99, 91);
+    border: 1px solid rgb(6, 53, 64);
+    border-radius: 8px;
+    max-width: 300px;
+    padding: 4px;
+}
+
+.castFoto{
+width: 90%;
+}
+
+.castName{font-size: 16px;
+
+}

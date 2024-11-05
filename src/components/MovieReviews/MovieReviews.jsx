@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
 import { getMoviesReviews } from "../../services/Api";
 import { useParams } from "react-router-dom";
+import css from "./MovieReviews.module.css"
 
 const MovieReviews = () => {
   const { movieId } = useParams();
@@ -35,19 +36,19 @@ const MovieReviews = () => {
   }, [movieId]);
 
   return (
-    <div>
-      <h2>Movie Reviews</h2>
-      <div>
+    <div className={css.reviewCont}>
+      <h2 className={css.reviewTitle}>Movie Reviews</h2>
+      <div >
         {error && <div style={{ color: "red" }}>{error}</div>}
         {loading && <Loading />}
         {reviews.length === 0 ? (
           <p>No reviews available.</p>
         ) : (
-          <ul>
+          <ul className={css.reviewList}>
             {reviews.map((review) => (
               <li key={review.id}>
                 <p><strong>Author:</strong> {review.author}</p>
-                <p>{review.content}</p>
+                <p className={css.reviewItem}>{review.content}</p>
               </li>
             ))}
           </ul>

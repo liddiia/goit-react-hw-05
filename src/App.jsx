@@ -1,5 +1,5 @@
 import "./App.css";
-import { Header } from "./components/Header/Header";
+import { Header } from "./components/Navigation/Navigation";
 import MoviesPage from "./pages/MoviesPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";

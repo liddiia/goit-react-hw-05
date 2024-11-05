@@ -1,0 +1,15 @@
+.reviewCont{
+margin: 10px auto;
+}
+
+.reviewList{
+    list-style: none;
+}
+.reviewItem{
+    max-width: 95%;
+    background-color: rgb(75, 99, 91);
+    border: 1px solid  rgb(6, 53, 64);
+    border-radius: 5px;
+    text-align: left;
+    
+}

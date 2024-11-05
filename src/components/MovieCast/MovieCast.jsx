@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
 import { getMoviesCredits } from "../../services/Api";
-import { useParams } from "react-router-dom";
-
+// import { useLocation, 
+import {useParams } from "react-router-dom";
+import css from "./MovieCast.module.css"
 const MovieCast = () => {
+  // const location = useLocation();
   const { movieId } = useParams();
   const [casts, setCasts] = useState([]);
   const [error, setError] = useState(null);
@@ -16,8 +18,6 @@ const MovieCast = () => {
         setLoading(true);
         setError(null);
         const data = await getMoviesCredits(movieId);
-
-        // Перевірка, чи є в даних актори
         if (data && Array.isArray(data)) {
           setCasts(data);
         } else {
@@ -40,18 +40,18 @@ const MovieCast = () => {
       <div>
         {error && <div style={{ color: "red" }}>{error}</div>}
         {loading && <Loading />}
-        <ul>
+        <ul className={css.castCont}> 
           {casts.length > 0 ? (
             casts.map((cast) => (
-              <li key={cast.id}>
-                <h3>{cast.name}</h3>
+              <li className={css.castCard} key={cast.id}>
+                <h3 className={css.castName}>{cast.name}</h3>
                 {cast.profile_path ? (
-                  <img
+                  <img className={css.castFoto}
                    src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`}
                     alt={`${cast.name}`}
                   />
                 ) : (
-                  <p>No image available</p> // Заглушка, якщо немає фото
+                  <p>No photo available</p> // Заглушка, якщо немає фото
                 )}
               </li>
             ))
